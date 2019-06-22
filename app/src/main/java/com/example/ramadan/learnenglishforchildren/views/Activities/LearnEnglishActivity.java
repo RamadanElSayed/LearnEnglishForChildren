@@ -1,4 +1,5 @@
 package com.example.ramadan.learnenglishforchildren.views.Activities;
+
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -23,6 +24,7 @@ public class LearnEnglishActivity extends AppCompatActivity {
         addFragment(addFamilyProfileFragment);
         checkAndroidVersion();
     }
+
     private void addFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.container, fragment);
@@ -30,7 +32,7 @@ public class LearnEnglishActivity extends AppCompatActivity {
     }
 
     public void checkAndroidVersion() {
-        String arr[] = {Manifest.permission.RECORD_AUDIO,
+        String[] arr = {Manifest.permission.RECORD_AUDIO,
                 Manifest.permission.MODIFY_AUDIO_SETTINGS
         };
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {

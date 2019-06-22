@@ -1,6 +1,5 @@
 package com.example.ramadan.learnenglishforchildren.views.Fragments;
 
-
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -11,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.ramadan.learnenglishforchildren.R;
 import com.example.ramadan.learnenglishforchildren.presenters.LearnEnglishPresenterImpl;
 import com.example.ramadan.learnenglishforchildren.views.Interfaces.LearnEnglishView;
@@ -34,6 +34,8 @@ public class LearnEnglishFragment extends Fragment implements LearnEnglishView {
     private String[] wordsVoice;
     private int indexNow = 0;
     private TextToSpeech textMakeVoice;
+    private LearnEnglishPresenterImpl learnEnglishPresenter;
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -50,7 +52,7 @@ public class LearnEnglishFragment extends Fragment implements LearnEnglishView {
 
     @Override
     public void initialLearnEnglishData() {
-        LearnEnglishPresenterImpl learnEnglishPresenter = new LearnEnglishPresenterImpl(getActivity(), this);
+        learnEnglishPresenter = new LearnEnglishPresenterImpl(getActivity(), this);
         learnEnglishPresenter.getPhotosOfWords();
         learnEnglishPresenter.getWordsOfPhotos();
         learnEnglishPresenter.getCharactersOfPhotos();
@@ -63,14 +65,11 @@ public class LearnEnglishFragment extends Fragment implements LearnEnglishView {
 
     @Override
     public void initialSpeech() {
-        textMakeVoice = new TextToSpeech(getActivity(), new TextToSpeech.OnInitListener() {
-            @Override
-            public void onInit(int status) {
-                if (status == TextToSpeech.SUCCESS) {
-                    textMakeVoice.setLanguage(Locale.ENGLISH);
-                } else {
-                    showErrMsg(getString(R.string.language_not_sported));
-                }
+        textMakeVoice = new TextToSpeech(getActivity(), status -> {
+            if (status == TextToSpeech.SUCCESS) {
+                textMakeVoice.setLanguage(Locale.ENGLISH);
+            } else {
+                showErrMsg(getString(R.string.language_not_sported));
             }
         });
     }
@@ -153,4 +152,15 @@ public class LearnEnglishFragment extends Fragment implements LearnEnglishView {
         textMakeVoice.speak(wordVoiceNow, TextToSpeech.QUEUE_FLUSH, null);
     }
 
+    @Override
+    public void onStop() {
+        super.onStop();
+        learnEnglishPresenter.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        learnEnglishPresenter.onDestroy();
+    }
 }
