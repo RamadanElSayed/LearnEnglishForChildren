@@ -16,7 +16,6 @@ import com.example.ramadan.learnenglishforchildren.presenters.LearnEnglishPresen
 import com.example.ramadan.learnenglishforchildren.views.Interfaces.LearnEnglishView;
 
 import java.util.Locale;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
