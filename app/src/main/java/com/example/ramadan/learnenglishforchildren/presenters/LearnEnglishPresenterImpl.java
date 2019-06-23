@@ -5,6 +5,7 @@ import android.content.Context;
 import com.example.ramadan.learnenglishforchildren.R;
 import com.example.ramadan.learnenglishforchildren.base.BaseView;
 import com.example.ramadan.learnenglishforchildren.views.Interfaces.LearnEnglishView;
+
 import io.reactivex.Flowable;
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -70,19 +71,6 @@ public class LearnEnglishPresenterImpl implements LearnEnglishPresenter {
 
     }
 
-    private int[] getCharactersPhotoIndex() {
-        return new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f, R.drawable.j, R.drawable.h,
-                R.drawable.i, R.drawable.g, R.drawable.k, R.drawable.l, R.drawable.m, R.drawable.n, R.drawable.o, R.drawable.p, R.drawable.q, R.drawable.r
-                , R.drawable.s, R.drawable.t, R.drawable.u, R.drawable.v, R.drawable.w, R.drawable.x, R.drawable.y, R.drawable.z};
-    }
-
-    private int[] getPhotosOfWordsIndex() {
-        return new int[]{R.drawable.ant,R.drawable.butterfly,R.drawable.cat,R.drawable.dog,R.drawable.elephont,R.drawable.frog,R.drawable.jellyfish
-                ,R.drawable.hippoptamous,R.drawable.iguana,R.drawable.giraffe,R.drawable.kangaroo,R.drawable.lion,R.drawable.monkey,R.drawable.narwhal
-                ,R.drawable.owl,R.drawable.panda,R.drawable.quetzal,R.drawable.rat,R.drawable.sheep,R.drawable.turtle,R.drawable.unicorn,R.drawable.viper
-                ,R.drawable.worm,R.drawable.xrayfish,R.drawable.yak,R.drawable.zebra};
-    }
-
     @Override
     public void setView(BaseView view) {
         learnEnglishView = (LearnEnglishView) view;
@@ -105,4 +93,20 @@ public class LearnEnglishPresenterImpl implements LearnEnglishPresenter {
         }
 
     }
+
+    @Override
+    public int[] getCharactersPhotoIndex() {
+        return new int[]{R.drawable.a, R.drawable.b, R.drawable.c, R.drawable.d, R.drawable.e, R.drawable.f, R.drawable.j, R.drawable.h,
+                R.drawable.i, R.drawable.g, R.drawable.k, R.drawable.l, R.drawable.m, R.drawable.n, R.drawable.o, R.drawable.p, R.drawable.q, R.drawable.r
+                , R.drawable.s, R.drawable.t, R.drawable.u, R.drawable.v, R.drawable.w, R.drawable.x, R.drawable.y, R.drawable.z};
+    }
+
+    @Override
+    public int[] getPhotosOfWordsIndex() {
+        return new int[]{R.drawable.ant, R.drawable.butterfly, R.drawable.cat, R.drawable.dog, R.drawable.elephont, R.drawable.frog, R.drawable.jellyfish
+                , R.drawable.hippoptamous, R.drawable.iguana, R.drawable.giraffe, R.drawable.kangaroo, R.drawable.lion, R.drawable.monkey, R.drawable.narwhal
+                , R.drawable.owl, R.drawable.panda, R.drawable.quetzal, R.drawable.rat, R.drawable.sheep, R.drawable.turtle, R.drawable.unicorn, R.drawable.viper
+                , R.drawable.worm, R.drawable.xrayfish, R.drawable.yak, R.drawable.zebra};
+    }
+
 }

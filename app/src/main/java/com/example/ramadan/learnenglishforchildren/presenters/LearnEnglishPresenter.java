@@ -9,4 +9,6 @@ public interface LearnEnglishPresenter extends BasePresenter {
     void onDestroy();
     void getPhotosOfCharacters();
     void getPhotosOfWords();
+    int[] getCharactersPhotoIndex();
+    int[] getPhotosOfWordsIndex();
 }
